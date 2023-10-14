@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Tugas pertemuan 5  '),
+          title: Text('Situs Web Flutter Menarik'),
         ),
         body: MyHomePage(),
       ),
@@ -18,10 +18,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController dobController = TextEditingController();
   final TextEditingController questionController = TextEditingController();
+  bool isMale = false; // Untuk pemilihan jenis kelamin
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +44,7 @@ class MyHomePage extends StatelessWidget {
           children: <Widget>[
             Card(
               elevation: 5,
-              color: Colors.white.withOpacity(0.9),
+              color: Colors.white.withOpacity(0.8),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
@@ -48,7 +54,6 @@ class MyHomePage extends StatelessWidget {
                       size: 50,
                       color: Colors.red,
                     ),
-                    SizedBox(height: 20),
                     SizedBox(height: 10),
                     Text(
                       'Tugas Flutter Pertemuan 5',
@@ -95,6 +100,30 @@ class MyHomePage extends StatelessWidget {
                       controller: questionController,
                       decoration: InputDecoration(labelText: 'Pertanyaan Anda'),
                       maxLines: 3,
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      children: <Widget>[
+                        Text('Jenis Kelamin: '),
+                        Checkbox(
+                          value: isMale,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              isMale = value!;
+                            });
+                          },
+                        ),
+                        Text('Laki-Laki'),
+                         Checkbox(
+                          value: isMale,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              isMale = value!;
+                            });
+                          },
+                        ),
+                        Text('Perempuan'),
+                      ],
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
